@@ -12,6 +12,8 @@ class Question extends Model
         'lesson_id',
     ];
 
+    public $timestamps = false;
+
     public function lesson()
     {
         return $this->belongsTo('App\Models\Lesson');

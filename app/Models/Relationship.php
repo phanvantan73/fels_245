@@ -13,6 +13,8 @@ class Relationship extends Model
         'follow_time',
     ];
 
+    public $timestamps = false;
+
     public function user()
     {
         return $this->belongsTo('App\Models\User');
