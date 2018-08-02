@@ -10,6 +10,8 @@ class Role extends Model
         'role',
     ];
 
+    public $timestamps = false;
+
     public function users()
     {
         return $this->belongsToMany('App\Models\User', 'role_user', 'user_id', 'role_id');
