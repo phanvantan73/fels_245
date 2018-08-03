@@ -13,6 +13,8 @@ class Result extends Model
         'user_id',
     ];
 
+    public $timestamps = false;
+
     public function lesson()
     {
         return $this->belongsTo('App\Models\Lesson');

@@ -12,6 +12,8 @@ class Lesson extends Model
         'desciption',
     ];
 
+    public $timestamps = false;
+
     public function course()
     {
         return $this->belongsTo('App\Models\Course');

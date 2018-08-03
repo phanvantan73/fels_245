@@ -38,7 +38,7 @@ $factory->define(Models\Activity::class, function (Faker $faker) {
 $factory->define(Models\Course::class, function (Faker $faker) {
     return [
         'course' => $faker->word,
-        'image' => $faker->image('/course'),
+        'image' => 'image.jpg',
         'description' => $faker->paragraph,
     ];
 });
@@ -77,7 +77,7 @@ $factory->define(Models\Profile::class, function (Faker $faker) {
         'birthday' => $faker->date(),
         'address' => $faker->address,
         'phone_number' => $faker->phoneNumber,
-        'avatar' => $faker->image('/avatar'),
+        'avatar' => 'avatar.jpg',
         'user_id' => Models\User::all()->random()->id,
     ];
 });
