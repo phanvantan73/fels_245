@@ -18,5 +18,15 @@
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4",
         "vue": "^2.5.7"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions"
+    ],
+    "dependencies": {
+        "font-awesome": "^4.7.0"
+    },
+    "config": {
+        "webpack": "node_modules/laravel-mix/setup/webpack.config.js"
     }
 }
