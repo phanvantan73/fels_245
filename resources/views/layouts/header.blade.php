@@ -22,7 +22,28 @@
         </nav>
     </div>
     <div class="header_side d-flex flex-row justify-content-center align-items-center">
-        {{ Html::image('') }}
-        <span>{{ trans('message.our_phone_number') }}</span>
+        @guest
+            <b>
+                <a class="nav-link" href="{{ route('login') }}">{{ trans('message.login') }}</a>
+            </b>
+            <b>
+                <a class="nav-link" href="{{ route('register') }}">{{ trans('message.register') }}</a>
+            </b>
+        @else
+            <div>
+                <h3 class="nav-link">
+                    {{ trans('message.hi') }} {{ Auth::user()->username }}
+                </h3>
+
+                <b>
+                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        {{ trans('message.logout') }}
+                    </a>
+
+                    {!! Form::open(['route' => 'logout', 'id' => 'logout-form']) !!}
+                    {!! Form::close() !!}
+                </b>
+            </div>
+        @endguest
     </div>
 </header>
