@@ -77,7 +77,7 @@
                 <div class="col-lg-6">
                     <div class="row">
                         <div class="col-lg-12">
-                            <a class="btn btn-link" href="#">
+                            <a class="btn btn-link" href="{{ route('lessons.show', ['lesson' => $lesson->id]) }}">
                                 {{ $lesson->lesson }}
                             </a>
                         </div>

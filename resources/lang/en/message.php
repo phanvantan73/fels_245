@@ -54,5 +54,29 @@ return [
     'answer' => 'Answer',
     'send' => 'Send comment',
     'notFoundError' => 'Not found',
+    'dbError' => [
+        'createError' => 'Can not create this transaction',
+    ],
+    'lesson' => [
+        'lesson' => 'Lesson: :lesson',
+        'name' => 'Name',
+        'content' => 'Content',
+        'description' => 'Description',
+        'course' => 'Belong to this course',
+        'num_of_questions' => 'The number of questions',
+        'now' => 'Learn Now',
+        'back' => 'Back',
+        'test' => 'Your Test',
+        'finish_test' => 'Finish',
+        'cancel' => 'Cancel',
+
+    ],
+    'test' => [
+        'result' => 'Your result',
+        'score' => 'Your score',
+        'done' => 'You have just done this test',
+        'correct' => 'Correct',
+        'incorrect' => 'Incorrect',
+    ]
 
 ];

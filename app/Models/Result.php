@@ -7,16 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Result extends Model
 {
     protected $fillable = [
-        'lesson_id',
-        'finish_time',
+        'test_id',
         'score',
-        'user_id',
     ];
 
     public $timestamps = false;
 
-    public function lesson()
+    public function test()
     {
-        return $this->belongsTo('App\Models\Lesson');
+        return $this->belongsTo(Test::class);
     }
 }
