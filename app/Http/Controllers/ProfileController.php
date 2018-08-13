@@ -6,36 +6,44 @@ use App\Models\User;
 use App\Models\Profile;
 use App\Models\Activity;
 use App\Models\Relationship;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Auth;
 
 class ProfileController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $profile = Auth::user()->profile;
-        $followers = Relationship::all()->where('user_id', Auth::user()->id)->where('status', 0);
-        $followings = Relationship::all()->where('user_id', Auth::user()->id)->where('status', 1);
-        $activities = Activity::orderBy('time', 'DESC')->where('user_id', Auth::user()->id)->take(5)->get();
+        $followers = Relationship::where('user_id', Auth::user()->id)
+            ->where('status', config('setting.default.follower'))
+            ->get();
+        $followings = Relationship::where('user_id', Auth::user()->id)
+            ->where('status', config('setting.default.following'))
+            ->get();
+        $activities = Activity::where('user_id', Auth::user()->id)
+            ->latest('time')
+            ->take(config('setting.default.limit_activities'))
+            ->get();
 
         return view('profile.index', compact('profile', 'followers', 'followings', 'activities'));
     }
 
     public function update(Request $request, $id)
     {
-        $profile = Profile::findOrFail($id);
-        $profile->update($request->all());
+        try {
+            $profile = Profile::findOrFail($id);
+            $profile->update($request->all());
+            Activity::create([
+                'user_id' => Auth::user()->id,
+                'action' => trans('message.action.update_profile'),
+                'content' => trans('message.profiles.update', ['action' => trans('message.action.update_profile'), 'time' => now()]),
+                'time' => now(),
+            ]);
 
-        return redirect('profile');
-    }
-
-    public function getUserNameFromId($id)
-    {
-        return User::findOrFail($id)->username;
+            return redirect('profile');
+        } catch (ModelNotFoundException $e) {
+            return back()->with('notFoundError', trans('message.notFoundError'));
+        }
     }
 }

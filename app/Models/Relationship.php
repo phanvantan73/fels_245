@@ -17,13 +17,11 @@ class Relationship extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 
-    public function getUserNameFromId($id)
+    public function userFollow()
     {
-        $user = User::findOrFail($id);
-
-        return $user->username;
+        return $this->belongsTo(User::class, 'follow_user_id', 'id');
     }
 }

@@ -1,68 +1,8 @@
 @extends('layouts.master')
 
 @section('home')
-    <div class="hero_slider_container">
-        <div class="hero_slider owl-carousel">
-            <!-- Hero Slide -->
-            <div class="hero_slide">
-                <div class="hero_slide_background">
-                    {{ Html::image(asset('images/slider_background.jpg')) }}
-                </div>
-                <div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
-                    <div class="hero_slide_content text-center text-uppercase">
-                        <h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">
-                            <span>
-                                {{ trans('message.profile') }}
-                            </span>
-                        </h1>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hero Slide -->
-            <div class="hero_slide">
-                <div class="hero_slide_background">
-                    {{ Html::image(asset('images/slider_background.jpg')) }}
-                </div>
-                <div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
-                    <div class="hero_slide_content text-center text-uppercase">
-                        <h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">
-                            <span>
-                                {{ trans('message.profile') }}
-                            </span>
-                        </h1>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hero Slide -->
-            <div class="hero_slide">
-                <div class="hero_slide_background">
-                    {{ Html::image(asset('images/slider_background.jpg')) }}
-                </div>
-                <div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
-                    <div class="hero_slide_content text-center text-uppercase">
-                        <h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">
-                            <span>
-                                {{ trans('message.profile') }}
-                            </span>
-                        </h1>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="hero_slider_left hero_slider_nav trans_200">
-            <span class="trans_200">
-                {{ trans('message.pre') }}
-            </span>
-        </div>
-        <div class="hero_slider_right hero_slider_nav trans_200">
-            <span class="trans_200">
-                {{ trans('message.next') }}
-            </span>
-        </div>
+    <div class="container">
+        {{ Html::image(asset(config('setting.images.lesson_background'))) }}
     </div>
 @endsection
 
@@ -71,7 +11,7 @@
         <div class="row">
             <div class="col">
                 <div class="section_title text-center">
-                    <h1>{{ trans('message.your_information') }}</h1>
+                    <h1>@lang('message.your_information')</h1>
                 </div>
             </div>
         </div>
@@ -79,41 +19,41 @@
         <div class="row course_boxes">
             <div class="col-lg-4 course_box">
                 <div class="card">
-                    {{ Html::image(asset('images/courses/course_1.jpg'), null, ['class' => 'card-img-top']) }}
+                    {{ Html::image(asset($profile->avatar), null, ['class' => 'card-img-top']) }}
                 </div>
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-8 quote">
                 {!! Form::open(['route' => ['profile.update', $profile->id], 'method' => 'PATCH']) !!}
                 <div class="form-group row">
-                    {!! Form::label('first_name', trans('message.first_name'), ['class' => 'col-lg-4 col-form-label text-lg-right']) !!}
+                    {!! Form::label('first_name', trans('message.profiles.first_name'), ['class' => 'col-lg-4 col-form-label text-lg-right']) !!}
 
                     <div class="col-lg-6">
                         {!! Form::text('first_name', $profile->first_name, old('first_name'), ['class' => 'form-control', 'id' => 'first_name']) !!}
                     </div>
                 </div>
                 <div class="form-group row">
-                    {!! Form::label('last_name', trans('message.last_name'), ['class' => 'col-lg-4 col-form-label text-lg-right']) !!}
+                    {!! Form::label('last_name', trans('message.profiles.last_name'), ['class' => 'col-lg-4 col-form-label text-lg-right']) !!}
 
                     <div class="col-lg-6">
                         {!! Form::text('last_name', $profile->last_name, old('last_name'), ['class' => 'form-control', 'id' => 'last_name']) !!}
                     </div>
                 </div>
                 <div class="form-group row">
-                    {!! Form::label('birthday', trans('message.birthday'), ['class' => 'col-lg-4 col-form-label text-lg-right']) !!}
+                    {!! Form::label('birthday', trans('message.profiles.birthday'), ['class' => 'col-lg-4 col-form-label text-lg-right']) !!}
 
                     <div class="col-lg-6">
                         {!! Form::date('birthday', $profile->birthday, old('birthday'), ['class' => 'form-control', 'id' => 'birthday']) !!}
                     </div>
                 </div>
                 <div class="form-group row">
-                    {!! Form::label('address', trans('message.address'), ['class' => 'col-lg-4 col-form-label text-lg-right']) !!}
+                    {!! Form::label('address', trans('message.profiles.address'), ['class' => 'col-lg-4 col-form-label text-lg-right']) !!}
 
                     <div class="col-lg-6">
                         {!! Form::textarea('address', $profile->address, ['class' => 'form-control', 'rows' => 2, 'cols' => 15, 'id' => 'address']) !!}
                     </div>
                 </div>
                 <div class="form-group row">
-                    {!! Form::label('phone_number', trans('message.phone_number'), ['class' => 'col-lg-4 col-form-label text-lg-right']) !!}
+                    {!! Form::label('phone_number', trans('message.profiles.phone_number'), ['class' => 'col-lg-4 col-form-label text-lg-right']) !!}
 
                     <div class="col-lg-6">
                         {!! Form::text('phone_number', $profile->phone_number, old('phone_number'), ['class' => 'form-control', 'id' => 'phone_number']) !!}
@@ -121,7 +61,7 @@
                 </div>
                 <div class="form-group row mb-0">
                     <div class="col-lg-8 offset-lg-4">
-                        {!! Form::submit(trans('message.save_profile'), ['class' => 'btn btn-success']) !!}
+                        {!! Form::submit(trans('message.profiles.save'), ['class' => 'btn btn-success']) !!}
                     </div>
                 </div>
                 {!! Form::close() !!}
@@ -131,7 +71,7 @@
         <div class="row">
             <div class="col">
                 <div class="section_title text-center">
-                    <h1>{{ trans('message.your_activities') }}</h1>
+                    <h1>@lang('message.profiles.your_activities')</h1>
                 </div>
             </div>
         </div>
@@ -139,10 +79,20 @@
         <div class="row">
             <div class="col">
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="activities">
-                        <ul class="list-group" id="listlog">
-                            @foreach($activities as $activity)
-                            <li class="list-group-item list-group-item-warning">{{ $activity->content }}</li>
+                    <div role="tabpanel">
+                        <ul class="list-group">
+
+                            @foreach ($activities as $activity)
+                            <li class="quote list-group-item list-group-item-info list-group-item-action course_boxes">
+                                <strong>
+                                    <a href="{{ route('profile.index') }}" class="text-dark">
+                                        {{ Auth::user()->username }}
+                                    </a>
+                                </strong>
+                                <span>
+                                    {{ $activity->content }}
+                                </span>
+                            </li>
                             @endforeach
                         </ul>
                     </div>
@@ -157,25 +107,26 @@
         <div class="row">
             <div class="col">
                 <div class="section_title text-center">
-                    <h1>{{ trans('message.your_follow') }}</h1>
+                    <h1>@lang('message.profiles.your_follow')</h1>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row course_boxes">
             <div class="col-lg-6">
                 <table class="table table-bordered">
                     <thead class="table-dark">
                         <tr>
-                            <th>{{ trans('message.your_follower') }}</th>
-                            <th>{{ trans('message.follow_time') }}</th>
+                            <th>@lang('message.profiles.your_follower')</th>
+                            <th>@lang('message.profiles.follow_time')</th>
                         </tr>
                     </thead>
-                    <tbody class="table-striped">
-                    @foreach($followers as $follower)
+                    <tbody class="table-striped quote">
+
+                    @foreach ($followers as $follower)
                         <tr>
                             <td>
                                 <a href="#" class="btn-link">
-                                {{ $follower->getUserNameFromId($follower->follow_user_id) }}
+                                {{ $follower->userFollow->username }}
                                 </a>
                             </td>
                             <td>{{ $follower->follow_time }}</td>
@@ -188,16 +139,17 @@
                 <table class="table table-bordered">
                     <thead class="table-dark">
                     <tr>
-                        <th>{{ trans('message.your_following') }}</th>
-                        <th>{{ trans('message.follow_time') }}</th>
+                        <th>@lang('message.profiles.your_following')</th>
+                        <th>@lang('message.profiles.follow_time')</th>
                     </tr>
                     </thead>
-                    <tbody class="table-striped">
-                    @foreach($followings as $following)
+                    <tbody class="table-striped quote">
+
+                    @foreach ($followings as $following)
                         <tr>
                             <td>
                                 <a href="#" class="btn-link">
-                                    {{ $following->getUserNameFromId($following->follow_user_id) }}
+                                    {{ $following->userFollow->username }}
                                 </a>
                             </td>
                             <td>{{ $following->follow_time }}</td>

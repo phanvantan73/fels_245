@@ -9,8 +9,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $courses = Course::orderBy('created_at', 'DESC')->take(3)->get();
-
+        $courses = Course::query()->latest()->take(config('setting.popular_courses'))->get();
         return view('home', compact('courses'));
     }
 }

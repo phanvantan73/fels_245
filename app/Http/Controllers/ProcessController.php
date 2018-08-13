@@ -9,15 +9,10 @@ use Auth;
 
 class ProcessController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $courses = CourseUser::all()->where('user_id', Auth::user()->id);
-        $words = ListOfWord::orderBy('add_to_list_time')->where('user_id', Auth::user()->id)->get();
+        $words = ListOfWord::where('user_id', Auth::user()->id)->oldest('add_to_list_time')->get();
 
         return view('process.index', compact('courses', 'words'));
     }

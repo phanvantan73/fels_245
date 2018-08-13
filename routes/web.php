@@ -11,14 +11,29 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index')->name('index');
+Route::resource('/', 'WelcomeController', ['only' => 'index']);
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth')->group(function () {
 
-Route::resource('courses', 'CourseController');
+    Route::resource('/home', 'HomeController', ['only' => 'index', 'names' => [
+        'index' => 'home',
+    ]]);
 
-Route::get('/process', 'ProcessController@index')->name('process');
+    Route::resource('courses', 'CourseController', ['only' => [
+        'index',
+        'show',
+    ]]);
 
-Route::resource('profile', 'ProfileController');
+    Route::resource('processes', 'ProcessController', ['only' => [
+        'index',
+    ]]);
+
+    Route::resource('profile', 'ProfileController');
+
+    Route::resource('lessons', 'LessonsController', ['only' => 'show']);
+
+    Route::resource('tests', 'TestsController');
+
+});
