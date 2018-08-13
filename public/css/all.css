@@ -16551,14 +16551,14 @@ section {
 .card-text {
     font-size: 14px;
     font-weight: 500;
-    color: #a5a5a5;
+    color: #000000;
     margin-top: -12px;
 }
 
 .price_box {
     width: 100%;
     height: 67px;
-    background: #eaebec;
+    background: #ffc107;
     margin-top: 41px;
     padding-left: 35px;
 }

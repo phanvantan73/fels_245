@@ -3,7 +3,7 @@
         <!-- Logo -->
         <div class="logo_container">
             <div class="logo">
-                {{ Html::image('') }}
+                {{ Html::image(asset('images/logo.png')) }}
                 <span>{{ trans('message.courses') }}</span>
             </div>
         </div>
@@ -11,11 +11,11 @@
         <nav class="main_nav_container">
             <div class="main_nav">
                 <ul class="main_nav_list">
-                    <li class="main_nav_item"><a href="#">{{ trans('message.home') }}</a></li>
-                    <li class="main_nav_item"><a href="#">{{ trans('message.about_us') }}</a></li>
-                    <li class="main_nav_item"><a href="#">{{ trans('message.courses') }}</a></li>
+                    <li class="main_nav_item"><a href="{{ route('home') }}">{{ trans('message.home') }}</a></li>
+                    <li class="main_nav_item"><a href="{{ route('courses.index') }}">{{ trans('message.courses') }}</a></li>
+                    <li class="main_nav_item"><a href="#">{{ trans('message.process') }}</a></li>
+                    <li class="main_nav_item"><a href="#">{{ trans('message.profile') }}</a></li>
                     <li class="main_nav_item"><a href="#">{{ trans('message.event') }}</a></li>
-                    <li class="main_nav_item"><a href="#">{{ trans('message.news') }}</a></li>
                     <li class="main_nav_item"><a href="#">{{ trans('message.contact_us') }}</a></li>
                 </ul>
             </div>
