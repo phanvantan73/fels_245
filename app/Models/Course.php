@@ -21,4 +21,9 @@ class Course extends Model
     {
         return $this->belongsToMany('App\Models\User', 'course_user', 'user_id', 'course_id');
     }
+
+    public function getImageAttribute()
+    {
+        return config('setting.images.course_img') . $this->attributes['image'];
+    }
 }
