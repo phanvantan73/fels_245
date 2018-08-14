@@ -13,7 +13,7 @@
                 <ul class="main_nav_list">
                     <li class="main_nav_item"><a href="{{ route('home') }}">{{ trans('message.home') }}</a></li>
                     <li class="main_nav_item"><a href="{{ route('courses.index') }}">{{ trans('message.courses') }}</a></li>
-                    <li class="main_nav_item"><a href="#">{{ trans('message.process') }}</a></li>
+                    <li class="main_nav_item"><a href="{{ route('process') }}">{{ trans('message.process') }}</a></li>
                     <li class="main_nav_item"><a href="#">{{ trans('message.profile') }}</a></li>
                     <li class="main_nav_item"><a href="#">{{ trans('message.event') }}</a></li>
                     <li class="main_nav_item"><a href="#">{{ trans('message.contact_us') }}</a></li>

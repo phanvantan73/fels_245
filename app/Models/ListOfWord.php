@@ -21,4 +21,9 @@ class ListOfWord extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function course()
+    {
+        return $this->belongsTo('App\Models\Course');
+    }
 }
