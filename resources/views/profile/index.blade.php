@@ -121,10 +121,32 @@
                 </div>
                 <div class="form-group row mb-0">
                     <div class="col-lg-8 offset-lg-4">
-                        {!! Form::submit(trans('message.edit_profile'), ['class' => 'btn btn-success']) !!}
+                        {!! Form::submit(trans('message.save_profile'), ['class' => 'btn btn-success']) !!}
                     </div>
                 </div>
                 {!! Form::close() !!}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="section_title text-center">
+                    <h1>{{ trans('message.your_activities') }}</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="activities">
+                        <ul class="list-group" id="listlog">
+                            @foreach($activities as $activity)
+                            <li class="list-group-item list-group-item-warning">{{ $activity->content }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -141,7 +163,7 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <table class="table table-bordered table-responsive">
+                <table class="table table-bordered">
                     <thead class="table-dark">
                         <tr>
                             <th>{{ trans('message.your_follower') }}</th>
@@ -157,6 +179,28 @@
                                 </a>
                             </td>
                             <td>{{ $follower->follow_time }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-6">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                    <tr>
+                        <th>{{ trans('message.your_following') }}</th>
+                        <th>{{ trans('message.follow_time') }}</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-striped">
+                    @foreach($followings as $following)
+                        <tr>
+                            <td>
+                                <a href="#" class="btn-link">
+                                    {{ $following->getUserNameFromId($following->follow_user_id) }}
+                                </a>
+                            </td>
+                            <td>{{ $following->follow_time }}</td>
                         </tr>
                     @endforeach
                     </tbody>
