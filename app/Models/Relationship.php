@@ -19,4 +19,11 @@ class Relationship extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function getUserNameFromId($id)
+    {
+        $user = User::findOrFail($id);
+
+        return $user->username;
+    }
 }

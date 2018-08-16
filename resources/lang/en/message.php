@@ -48,5 +48,6 @@ return [
     'our_library' => 'Our Library',
     'our_event' => 'Our Events',
     'up_event' => 'Upcoming Events',
+    'your_information' => 'Your information',
 
 ];
