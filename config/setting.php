@@ -17,7 +17,14 @@ return [
         'our_library' => 'images/books.svg',
         'our_event' => 'images/envelope.svg',
         'event_img' => '',
+        'lesson_background' => 'images/lesson_bgd.jpg',
 
+    ],
+    'limit_questions' => 5,
+    'default' => [
+        'correct_option' => 1,
+        'incorrect_option' => 0,
+        'score' => 20,
     ],
 
 ];

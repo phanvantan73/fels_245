@@ -25,4 +25,9 @@ Route::middleware('auth')->group(function () {
         'index',
         'show',
     ]]);
+
+    Route::resource('lessons', 'LessonsController', ['only' => 'show']);
+
+    Route::resource('tests', 'TestsController');
+
 });
