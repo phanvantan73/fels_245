@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use Notifiable;
-    
+
     protected $table = 'users';
     /**
      * The attributes that are mass assignable.
@@ -39,36 +38,43 @@ class User extends Authenticatable
 
     public function activities()
     {
-        return $this->hasMany('App\Models\Activity');
+        return $this->hasMany(Activity::class);
     }
 
     public function relationships()
     {
-        return $this->hasMany('App\Models\Relationship');
-    }
-
-    public function listOfWords()
-    {
-        return $this->hasMany('App\Models\ListOfWord', 'user_id', 'id');
+        return $this->hasMany(Relationship::class);
     }
 
     public function profile()
     {
-        return $this->hasOne('App\Models\Profile');
+        return $this->hasOne(Profile::class);
     }
 
     public function socialAccounts()
     {
-        return $this->hasMany('App\Models\SocialAccount', 'user_id', 'id');
+        return $this->hasMany(SocialAccount::class, 'user_id', 'id');
     }
 
     public function courses()
     {
-        return $this->belongsToMany('App\Models\Course', 'course_user', 'course_id', 'user_id');
+        return $this->belongsToMany(Course::class, 'course_user', 'user_id', 'course_id');
     }
 
     public function roles()
     {
-        return $this->belongsToMany('App\Models\Role', 'role_user', 'role_id', 'user_id');
+        return $this->belongsToMany(Role::class, 'role_users', 'user_id', 'role_id');
+    }
+
+    public function words()
+    {
+        return $this->belongsToMany(Word::class, 'list_of_words', 'user_id', 'word_id')
+            ->using(ListOfWord::class)
+            ->withPivot('id', 'status', 'add_to_list_time', 'learn_time');
+    }
+
+    public function tests()
+    {
+        return $this->hasMany(Test::class);
     }
 }

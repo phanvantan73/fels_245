@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class ListOfWord extends Model
+class ListOfWord extends Pivot
 {
     protected $fillable = [
         'user_id',
@@ -17,8 +17,20 @@ class ListOfWord extends Model
 
     public $timestamps = false;
 
+    public function getStatusAttribute()
+    {
+        $status = $this->attributes['status'] == config('setting.default.learned') ? trans('message.processes.word.learned') : trans('message.processes.word.unlearned');
+
+        return $status;
+    }
+
+    public function word()
+    {
+        return $this->belongsTo(Word::class);
+    }
+
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 }

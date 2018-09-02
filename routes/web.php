@@ -26,8 +26,16 @@ Route::middleware('auth')->group(function () {
         'show',
     ]]);
 
-    Route::resource('lessons', 'LessonsController', ['only' => 'show']);
+    Route::get('/process', 'ProcessController@index')->name('process');
 
-    Route::resource('tests', 'TestsController');
+    Route::get('/process/learn-word/{id}', 'ProcessController@learnWord')->name('process.learn.word');
+
+    Route::get('/process/delete-word/{id}', 'ProcessController@deleteWord')->name('process.delete.word');
+
+    Route::resource('profile', 'ProfileController');
+
+    Route::resource('lessons', 'LessonController', ['only' => 'show']);
+
+    Route::resource('tests', 'TestController', ['only' => 'store']);
 
 });

@@ -14,12 +14,17 @@ class Course extends Model
 
     public function lessons()
     {
-        return $this->hasMany('App\Models\Lesson');
+        return $this->hasMany(Lesson::class);
     }
 
     public function users()
     {
-        return $this->belongsToMany('App\Models\User', 'course_user', 'user_id', 'course_id');
+        return $this->belongsToMany(User::class, 'course_user', 'course_id', 'user_id');
+    }
+
+    public function words()
+    {
+        return $this->hasManyThrough(Word::class, Lesson::class);
     }
 
     public function getImageAttribute()

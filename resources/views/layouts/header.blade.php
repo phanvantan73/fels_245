@@ -13,7 +13,7 @@
                 <ul class="main_nav_list">
                     <li class="main_nav_item"><a href="{{ route('home') }}">@lang('message.home')</a></li>
                     <li class="main_nav_item"><a href="{{ route('courses.index') }}">@lang('message.courses')</a></li>
-                    <li class="main_nav_item"><a href="#">@lang('message.process')</a></li>
+                    <li class="main_nav_item"><a href="{{ route('process') }}">@lang('message.process')</a></li>
                     <li class="main_nav_item"><a href="#">@lang('message.profile')</a></li>
                     <li class="main_nav_item"><a href="#">@lang('message.event')</a></li>
                     <li class="main_nav_item"><a href="#">@lang('message.contact_us')</a></li>
