@@ -30,7 +30,7 @@ return [
         'follower' => 0,
         'following' => 1,
         'limit_activities' => 5,
-        'limit_tests' => 5,
+        'paginate_tests' => 5,
     ],
 
 ];

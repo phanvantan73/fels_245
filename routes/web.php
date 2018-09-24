@@ -38,4 +38,16 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('tests', 'TestController', ['only' => 'store']);
 
+    Route::group(['prefix' => '/profile'], function () {
+        Route::get('/', 'ProfileController@index')->name('profile');
+
+        Route::post('/update', 'ProfileController@update')->name('profile.update');
+
+        Route::get('/unfollow/{id}', 'ProfileController@unfollow')->name('profile.unfollow');
+
+        Route::post('/change-avatar', 'ProfileController@changeAvatar')->name('profile.change.avatar');
+
+        Route::get('/show-test/{id}', 'ProfileController@showTest')->name('profile.show.test');
+    });
+
 });

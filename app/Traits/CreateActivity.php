@@ -34,6 +34,24 @@ trait CreateActivity
                         'time' => $time,
                     ]);
                     break;
+                case trans('message.default.profile') :
+                    $content = trans('message.action.update', [
+                        'action' => $action,
+                        'time' => $time,
+                    ]);
+                    break;
+                case trans('message.default.follower') :
+                    $content = trans('message.action.un_follow', [
+                        'action' => $action,
+                        'username' => $attribute,
+                        'time' => $time,
+                    ]);
+                    break;
+                case trans('message.default.avatar') :
+                    $content = trans('message.action.change_avatar', [
+                        'action' => $action,
+                        'time' => $time,
+                    ]);
             }
 
             $user->activities()->create([
