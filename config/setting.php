@@ -18,13 +18,19 @@ return [
         'our_event' => 'images/envelope.svg',
         'event_img' => '',
         'lesson_background' => 'images/lesson_bgd.jpg',
-
+        'profile_img' => 'images/profiles/',
     ],
     'limit_questions' => 5,
     'default' => [
         'correct_option' => 1,
         'incorrect_option' => 0,
         'score' => 20,
+        'learned' => 1,
+        'unlearned' => 0,
+        'follower' => 0,
+        'following' => 1,
+        'limit_activities' => 5,
+        'limit_tests' => 5,
     ],
 
 ];

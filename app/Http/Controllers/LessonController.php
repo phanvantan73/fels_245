@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lesson;
-use App\Models\Question;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
 
-class LessonsController extends Controller
+class LessonController extends Controller
 {
     public function show($id)
     {
