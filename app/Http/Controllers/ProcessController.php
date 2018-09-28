@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
+use App\Models\Word;
 use Carbon\Carbon;
 use DB;
 use Exception;
@@ -20,13 +20,24 @@ class ProcessController extends Controller
         return view('process.index', compact('courses', 'words'));
     }
 
-    public function learnWord($id)
+    public function showWord($wordId)
+    {
+        try {
+            $word = Word::find($wordId);
+
+            return view('process.show_word', compact('word'));
+        } catch (Exception $e) {
+            return back()->with('notFoundError', trans('message.notFoundError'));
+        }
+    }
+
+    public function learnWord($wordId)
     {
         try {
             $now = Carbon::now();
 
             foreach ($this->user->words as $word) {
-                if ($word->pivot->id == $id) {
+                if ($word->pivot->word_id == $wordId) {
                     DB::transaction(function () use ($word, $now) {
                         $word->pivot->status = config('setting.default.learned');
                         $word->pivot->learn_time = $now;

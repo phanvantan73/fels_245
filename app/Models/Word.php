@@ -37,4 +37,14 @@ class Word extends Model
 
         return false;
     }
+
+    public function getImageAttribute()
+    {
+        return config('setting.images.word_img') . $this->attributes['image'];
+    }
+
+    public function getAudioAttribute()
+    {
+        return config('setting.audios.word_audio') . $this->attributes['audio'];
+    }
 }
