@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Word extends Model
 {
@@ -24,5 +25,16 @@ class Word extends Model
         return $this->belongsToMany(User::class, 'list_of_words', 'word_id', 'user_id')
             ->using(ListOfWord::class)
             ->withPivot('id', 'status', 'add_to_list_time', 'learn_time');
+    }
+
+    public function isAddToList($wordId)
+    {
+        foreach (Auth::user()->words as $word) {
+            if ($word->pivot->word_id == $wordId) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

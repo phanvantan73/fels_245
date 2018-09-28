@@ -1,5 +1,10 @@
 @extends('layouts.master')
 
+@section('css')
+    @parent
+    {{ Html::style('css/datatables.min.css') }}
+@endsection
+
 @section('home')
     <div class="hero_slider_container">
         <div class="hero_slider owl-carousel">
@@ -35,7 +40,7 @@
 
 @section('course_boxes')
     <div class="container">
-        <div class="row">
+        <div class="row course_boxes">
             <div class="col">
                 <div class="section_title text-left">
                     <h1 class="nav-link">
@@ -45,57 +50,100 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 course_box">
+            <div class="col-4 course_box">
                 <div class="card">
                     {{ Html::image(asset($course->image), null, ['class' => 'card-img-top']) }}
                 </div>
 
             </div>
-            <div class="col-lg-4">
+            <div class="col-2">
                 <div class="text-left">
                     <div class="nav-link">
                         <h2>
                             <b>{{ $course->course }}</b>
                         </h2>
                     </div>
-                    <div class="card-text">
+                    <div class="mini-quote">
                         {!! $course->description !!}
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <div class="text-left">
-                    <h2 class="nav-link">@lang('message.list_of_lessons'): </h2>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col">
+                        <div class="text-left">
+                            <h2 class="nav-link">@lang('message.list_of_lessons'): </h2>
+                        </div>
+                    </div>
                 </div>
+                @forelse ($course->lessons as $lesson)
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <a class="btn btn-link" href="{{ route('lessons.show', ['lesson' => $lesson->id]) }}">
+                                        {{ $lesson->lesson }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <div class="row">
+                        <div class="col-lg-6 nav-link">
+                            @lang('message.courses_sorry')
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 nav-link">
+                            @lang('message.thanks')
+                        </div>
+                    </div>
+                @endforelse
             </div>
         </div>
-        @forelse ($course->lessons as $lesson)
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <a class="btn btn-link" href="{{ route('lessons.show', ['lesson' => $lesson->id]) }}">
-                                {{ $lesson->lesson }}
-                            </a>
+        <div class="row course_boxes">
+            <div class="col">
+                <div class="row quote">
+                    <div class="col text-capitalize">
+                        @lang('message.word_list.default')
+                    </div>
+                </div>
+                <div class="row mini-quote">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="example">
+                                <thead class="table-dark">
+                                <tr>
+                                    <th>@lang('message.word_list.word')</th>
+                                    <th>@lang('message.word_list.description')</th>
+                                    <th>@lang('message.default.option')</th>
+                                </tr>
+                                </thead>
+                                <tbody class="table-striped">
+
+                                @forelse ($course->words as $word)
+                                    <tr>
+                                        <td>{{ $word->word }}</td>
+                                        <td>{{ $word->description }}</td>
+                                        <td>
+                                            <a class="btn btn-success {{ $word->isAddToList($word->id) ? 'disabled' : '' }}" href="{{ route('add.word', ['id' => $word->id, 'courseId' => $course->id]) }}">
+                                                @lang('message.word_list.add_to_list')
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <div class="col">
+                                        @lang('message.notFoundError')
+                                    </div>
+                                @endforelse
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
-        @empty
-            <div class="row">
-                <div class="col-lg-6 nav-link">
-                    @lang('message.courses_sorry')
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 nav-link">
-                    @lang('message.thanks')
-                </div>
-            </div>
-        @endforelse
+        </div>
     </div>
 @endsection
 
@@ -154,4 +202,10 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    @parent
+    {{ Html::script('js/datatables.min.js') }}
+    {{ Html::script('js/ajax.js') }}
 @endsection

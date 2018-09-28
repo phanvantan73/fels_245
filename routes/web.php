@@ -50,4 +50,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/show-test/{id}', 'ProfileController@showTest')->name('profile.show.test');
     });
 
+    Route::get('/add-word/{id}/{courseId}', 'CourseController@addWordToList')->name('add.word');
+
 });

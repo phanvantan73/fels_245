@@ -128,6 +128,7 @@ return [
         'update' => 'have just :action profile at :time',
         'un_follow' => ':action <b> :username</b> at :time',
         'change_avatar' => ':action avatar at :time',
+        'add' => 'add',
     ],
     'default' => [
         'word' => 'word',
@@ -135,5 +136,12 @@ return [
         'profile' => 'profile',
         'follower' => 'follower',
         'avatar' => 'avatar',
+        'option' => 'option',
+    ],
+    'word_list' => [
+        'default' => 'the list of words',
+        'word' => 'word',
+        'description' => 'description',
+        'add_to_list' => 'add to my list',
     ],
 ];
