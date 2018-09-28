@@ -79,7 +79,7 @@
                             <td>{{ $word->pivot->add_to_list_time }}</td>
                             <td>{{ $word->pivot->learn_time }}</td>
                             <td>
-                                <a id="learn-word" class="{{ $word->pivot->status == trans('message.processes.word.learned') ? 'btn btn-primary disabled' : 'btn btn-primary' }}" href="{{ route('process.learn.word', ['id' => $word->pivot->id]) }}">
+                                <a id="learn-word" class="{{ $word->pivot->status == trans('message.processes.word.learned') ? 'btn btn-primary disabled' : 'btn btn-primary' }}" href="{{ route('process.show.word', ['id' => $word->id]) }}">
                                     @lang('message.processes.word.learn')
                                 </a>
                                 <a id="delete-word" class="btn btn-danger" href="{{ route('process.delete.word', ['id' => $word->pivot->id]) }}">

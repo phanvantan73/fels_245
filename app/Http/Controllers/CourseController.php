@@ -46,7 +46,7 @@ class CourseController extends Controller
             $word = Word::find($wordId);
             DB::transaction(function () use ($wordId, $word) {
                 $this->user->words()->attach($wordId, [
-                    'status' => 0,
+                    'status' => config('setting.default.unlearned'),
                     'add_to_list_time' => now(),
                     'learn_time' => null,
                 ]);
