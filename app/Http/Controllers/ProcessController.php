@@ -12,17 +12,6 @@ class ProcessController extends Controller
 {
     use CreateActivity;
 
-    protected $user;
-
-    public function __construct()
-    {
-        $this->middleware(function ($request, $next) {
-            $this->user = Auth::user();
-
-            return $next($request);
-        });
-    }
-
     public function index()
     {
         $courses = $this->user->courses;
