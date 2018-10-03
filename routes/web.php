@@ -32,6 +32,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/process/delete-word/{id}', 'ProcessController@deleteWord')->name('process.delete.word');
 
+    Route::get('/process/show-word/{id}', 'ProcessController@showWord')->name('process.show.word');
+
     Route::resource('profile', 'ProfileController');
 
     Route::resource('lessons', 'LessonController', ['only' => 'show']);

@@ -19,6 +19,10 @@ return [
         'event_img' => '',
         'lesson_background' => 'images/lesson_bgd.jpg',
         'profile_img' => 'images/profiles/',
+        'word_img' => 'images/words/',
+    ],
+    'audios' => [
+        'word_audio' => 'audios/words/',
     ],
     'limit_questions' => 5,
     'default' => [

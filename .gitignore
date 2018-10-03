@@ -16,4 +16,5 @@ yarn-error.log
 /public/js
 /public/mix-manifest.json
 /public/admin
+/public/audios
 package-lock.json
