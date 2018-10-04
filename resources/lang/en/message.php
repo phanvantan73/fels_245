@@ -114,6 +114,12 @@ return [
         'score' => 'score',
         'detail' => 'detail',
         'change_avatar' => 'change',
+        'word_learned' => 'Word learned',
+        'chart' => 'chart',
+        'select_date' => 'select date',
+        'see' => 'See',
+        'by_month' => 'see by month',
+        'by_date' => 'see by date',
     ],
     'action' => [
         'learn' => 'learn',
@@ -145,4 +151,5 @@ return [
         'description' => 'description',
         'add_to_list' => 'add to my list',
     ],
+    'chart' => 'chart',
 ];
