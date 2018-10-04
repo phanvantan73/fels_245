@@ -54,6 +54,7 @@ return [
     'minutes' => 'minutes',
     'answer' => 'Answer',
     'send' => 'Send comment',
+    'want_to_learn' => 'The word you want to learn',
     'notFoundError' => 'Not found',
     'dbError' => [
         'createError' => 'Can not create this transaction',
