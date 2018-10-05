@@ -15,7 +15,7 @@
                     <li class="main_nav_item"><a href="{{ route('courses.index') }}">@lang('message.courses')</a></li>
                     <li class="main_nav_item"><a href="{{ route('process') }}">@lang('message.process')</a></li>
                     <li class="main_nav_item"><a href="{{ route('profile') }}">@lang('message.profile')</a></li>
-                    <li class="main_nav_item"><a href="#">@lang('message.event')</a></li>
+                    <li class="main_nav_item"><a href="{{ route('chart') }}">@lang('message.chart')</a></li>
                     <li class="main_nav_item"><a href="#">@lang('message.contact_us')</a></li>
                 </ul>
             </div>

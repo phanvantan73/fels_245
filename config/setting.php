@@ -35,6 +35,10 @@ return [
         'following' => 1,
         'limit_activities' => 5,
         'paginate_tests' => 5,
+        'date' => 'date',
+        'month' => 'month',
+        'today' => today(),
+        'add_date' => '-01',
     ],
 
 ];

@@ -54,4 +54,12 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/add-word/{id}/{courseId}', 'CourseController@addWordToList')->name('add.word');
 
+    Route::get('/chart', 'ChartController@index')->name('chart');
+
+    Route::post('/get-chart-by-date', 'ChartController@getChartByDate')->name('chart.by.date');
+
+    Route::get('/get-chart-by-month', 'ChartController@getChartByMonth')->name('chart.by.month');
+
+    Route::post('/get-chart-by-month', 'ChartController@postChartByMonth')->name('post.chart.by.month');
+
 });
