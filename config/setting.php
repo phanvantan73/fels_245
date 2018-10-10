@@ -39,6 +39,10 @@ return [
         'month' => 'month',
         'today' => today(),
         'add_date' => '-01',
+        'ad_mail' => 'admin@gmail.com',
+        'zero' => 0,
+        'start_remind_time' => 7,
+        'end_remind_time' => 19,
     ],
 
 ];
