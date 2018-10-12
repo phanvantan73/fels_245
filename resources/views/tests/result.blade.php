@@ -77,12 +77,17 @@
                                         <div class="col">
                                             @foreach ($testAnswer->question->options as $option)
                                                 <div class="radio disabled">
-                                                    @if ($option->id == $testAnswer->option->id)
-                                                        {!! Form::radio($testAnswer->id, $option->id, true, ['id' => $option->id]) !!}
-                                                        {!! Form::label($option->id, $option->option, ['class' => $testAnswer->option->is_true ? 'text-success' : 'text-danger']) !!}
-                                                    @else
+                                                    @if ($testAnswer->option_id == null)
                                                         {!! Form::radio($testAnswer->id, $option->id, null, ['id' => $option->id]) !!}
                                                         {!! Form::label($option->id, $option->option) !!}
+                                                    @else
+                                                        @if ($option->id == $testAnswer->option_id)
+                                                            {!! Form::radio($testAnswer->id, $option->id, true, ['id' => $option->id]) !!}
+                                                            {!! Form::label($option->id, $option->option, ['class' => $testAnswer->option->is_true ? 'text-success' : 'text-danger']) !!}
+                                                        @else
+                                                            {!! Form::radio($testAnswer->id, $option->id, null, ['id' => $option->id]) !!}
+                                                            {!! Form::label($option->id, $option->option) !!}
+                                                        @endif
                                                     @endif
                                                 </div>
                                             @endforeach

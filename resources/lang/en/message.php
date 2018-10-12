@@ -157,4 +157,5 @@ return [
     'btn_email' => 'Visit our page',
     'thanks_email' => 'Thanks for visiting our page.',
     'total_user' => 'Total number of registered users for today is :count',
+    'test_timer' => 'You have 30 minutes for this test. Good luck!'
 ];
