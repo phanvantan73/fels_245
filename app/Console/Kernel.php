@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Console\Commands\CollectRegisteredUsers;
+use App\Console\Commands\RemindUsers;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +15,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        CollectRegisteredUsers::class,
+        RemindUsers::class,
     ];
 
     /**
@@ -24,8 +27,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('registered:users')
+            ->daily();
+
+        $schedule->command('remind:users')
+            ->twiceDaily(config('setting.default.start_remind_time'), config('setting.default.end_remind_time'));
     }
 
     /**

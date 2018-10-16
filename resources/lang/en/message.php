@@ -152,4 +152,9 @@ return [
         'add_to_list' => 'add to my list',
     ],
     'chart' => 'chart',
+    'word_email' => 'You still does not learn :count words',
+    'please_email' => 'Please visit this link below to see more information',
+    'btn_email' => 'Visit our page',
+    'thanks_email' => 'Thanks for visiting our page.',
+    'total_user' => 'Total number of registered users for today is :count',
 ];
