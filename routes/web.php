@@ -63,3 +63,20 @@ Route::middleware('auth')->group(function () {
     Route::post('/get-chart-by-month', 'ChartController@postChartByMonth')->name('post.chart.by.month');
 
 });
+
+Route::group(['namespace' => 'Administrator'], function () {
+
+    Route::get('/admincp/login', 'AdminLoginController@getLogin')->name('admincp.login');
+
+    Route::post('/admincp/login', 'AdminLoginController@postLogin');
+
+    Route::get('/admincp/logout', 'AdminLoginController@getLogout')->name('admincp.logout');
+
+    Route::group(['middleware' => 'admin'], function () {
+
+        Route::group(['prefix' => 'admincp'], function () {
+
+            Route::get('/', 'DashboardController@index')->name('admincp.dashboard');
+        });
+    });
+});
