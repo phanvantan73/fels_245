@@ -90,7 +90,7 @@
                             </div>
                         </div>
                     </div>
-                    {!! Form::open(['route' => 'tests.store', 'method' => 'POST']) !!}
+                    {!! Form::open(['route' => 'tests.store', 'id' => 'done-test']) !!}
                     @forelse ($questions as $question)
                         <div class="form-row course_boxes" id="toc_container_mini">
                             <div class="col">
@@ -123,11 +123,13 @@
                         <div class="col-lg-4">
                             {!! Form::submit(trans('message.lesson.finish_test'), ['class' => 'btn btn-lg btn-block btn-success']) !!}
                         </div>
-                        <div class="col-lg-4">
-
+                        <div class="col-lg-5 text-right">
+                            @lang('message.test_timer')
                         </div>
-                        <div class="col-lg-4">
-                            {!! Form::button(trans('message.lesson.cancel'), ['class' => 'btn btn-lg btn-block btn-danger', 'id' => 'test-cancel']) !!}
+                        <div class="col-lg-3">
+                            <div id="startValuesAndTargetExample">
+                                <div class="values timer_test"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -137,6 +139,8 @@
 @endsection
 
 @section('js')
+    @parent
     {{ Html::script(asset('js/jquery-3.2.1.min.js')) }}
     {{ Html::script(asset('js/ajax.js')) }}
+    {{ Html::script(asset('js/easytimer.min.js')) }}
 @endsection
