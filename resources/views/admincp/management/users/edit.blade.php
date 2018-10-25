@@ -13,7 +13,7 @@
                     @lang('message.edit')
                 </div>
                 <div class="panel-body">
-                    {!! Form::model($user, ['method' => 'PATCH', 'route' => ['user-management.update', 'id' => $user->id]]) !!}
+                    {!! Form::model($user, ['method' => 'PATCH', 'route' => ['users.update', 'id' => $user->id]]) !!}
                     <div class="form-group">
                         {!! Form::label('username', trans('message.username')) !!}
                         {!! Form::text('username', old('username'), ['class' => ['form-control', $errors->has('username') ? ' is-invalid' : ''], 'required' => 'required', 'id' => 'username']) !!}

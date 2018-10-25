@@ -80,10 +80,18 @@ Route::group(['namespace' => 'Administrator'], function () {
 
             Route::group(['namespace' => 'Management'], function () {
 
-                Route::resource('user-management', 'UserController', ['except' => [
+                Route::resource('users', 'UserController', ['except' => [
                     'show',
                     'create',
                 ]]);
+
+                Route::resource('courses', 'CourseController', [
+                    'except' => 'create',
+                    'names' => [
+                        'index' => 'admin.courses.index',
+                        'show' => 'admin.courses.show',
+                    ],
+                ]);
             });
         });
     });

@@ -53,7 +53,7 @@ class UserController extends Controller
                 $user->roles()->attach(config('setting.default.user_role'));
             });
 
-            return redirect()->route('user-management.index');
+            return redirect()->route('users.index');
         } catch (Exception $exception) {
             return back()->with('error', trans('message.dbError.createError'));
         }
@@ -98,7 +98,7 @@ class UserController extends Controller
                 ]);
             });
 
-            return redirect()->route('user-management.index');
+            return redirect()->route('users.index');
         } catch (Exception $exception) {
             return back()->with('error', trans('message.notFoundError'));
         }

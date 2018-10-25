@@ -29,9 +29,9 @@
                                 @endforeach
                             </td>
                             <td>
-                                <a href="{{ route('user-management.edit', ['id' => $user->id]) }}" class="btn fa fa-edit"></a>
-                                <a href="{{ route('user-management.destroy', ['id' => $user->id]) }}" class="btn fa fa-trash"></a>
-                                {!! Form::open(['method' => 'DELETE', 'route' => ['user-management.destroy', 'id' => $user->id]]) !!}
+                                <a href="{{ route('users.edit', ['id' => $user->id]) }}" class="btn fa fa-edit"></a>
+                                <a href="{{ route('users.destroy', ['id' => $user->id]) }}" class="btn fa fa-trash"></a>
+                                {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', 'id' => $user->id]]) !!}
                                 {!! Form::close() !!}
                             </td>
                         </tr>
@@ -48,7 +48,7 @@
                             @lang('message.add')
                         </div>
                         <div class="panel-body">
-                            {!! Form::open(['route' => 'user-management.store']) !!}
+                            {!! Form::open(['route' => 'users.store']) !!}
                             <div class="form-group">
                                 {!! Form::label('username', trans('message.username')) !!}
                                 {!! Form::text('username', old('username'), ['class' => ['form-control', $errors->has('username') ? ' is-invalid' : ''], 'required' => 'required', 'id' => 'username']) !!}

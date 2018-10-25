@@ -3,14 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Course extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'course',
         'image',
         'description',
     ];
+
+    protected $dates = ['deleted_at'];
 
     public function lessons()
     {
@@ -19,7 +24,7 @@ class Course extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'course_user', 'course_id', 'user_id');
+        return $this->belongsToMany(User::class);
     }
 
     public function words()

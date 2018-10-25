@@ -16,10 +16,10 @@
                 <a href="{{ route('admincp.dashboard') }}"><i class="fa fa-dashboard "></i>@lang('message.dashboard')</a>
             </li>
             <li>
-                <a href="{{ route('user-management.index') }}"><i class="fa fa-user"></i>@lang('message.management.users')</a>
+                <a href="{{ route('users.index') }}"><i class="fa fa-user"></i>@lang('message.management.users')</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-book"></i>@lang('message.management.courses')</a>
+                <a href="{{ route('admin.courses.index') }}"><i class="fa fa-book"></i>@lang('message.management.courses')</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-code"></i>@lang('message.management.lessons')</a>
