@@ -77,6 +77,14 @@ Route::group(['namespace' => 'Administrator'], function () {
         Route::group(['prefix' => 'admincp'], function () {
 
             Route::get('/', 'DashboardController@index')->name('admincp.dashboard');
+
+            Route::group(['namespace' => 'Management'], function () {
+
+                Route::resource('users', 'UserController', ['except' => [
+                    'show',
+                    'create',
+                ]]);
+            });
         });
     });
 });

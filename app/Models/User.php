@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use SoftDeletes;
 
     protected $table = 'users';
     /**
@@ -20,6 +22,8 @@ class User extends Authenticatable
         'password',
         'email',
     ];
+
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that should be hidden for arrays.
