@@ -43,6 +43,16 @@ return [
         'zero' => 0,
         'start_remind_time' => 7,
         'end_remind_time' => 19,
+        'ad_role' => 1,
+        'user_role' => 3,
+        'profile' => [
+            'first_name' => 'first name',
+            'last_name' => 'last name',
+            'birthday' => '2000-06-20',
+            'address' => 'Da Nang',
+            'phone_number' => '12345',
+            'avatar' => 'profile_1.jpg',
+        ]
     ],
 
 ];

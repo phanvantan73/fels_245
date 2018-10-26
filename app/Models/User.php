@@ -63,7 +63,7 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'role_users', 'user_id', 'role_id');
+        return $this->belongsToMany(Role::class);
     }
 
     public function words()
@@ -76,5 +76,10 @@ class User extends Authenticatable
     public function tests()
     {
         return $this->hasMany(Test::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->roles()->wherePivot('role_id', config('setting.default.ad_role'))->exists();
     }
 }
