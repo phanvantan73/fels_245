@@ -84,6 +84,14 @@ Route::group(['namespace' => 'Administrator'], function () {
                     'show',
                     'create',
                 ]]);
+
+                Route::resource('courses', 'CourseController', [
+                    'except' => 'create',
+                    'names' => [
+                        'index' => 'admin.courses.index',
+                        'show' => 'admin.courses.show',
+                    ],
+                ]);
             });
         });
     });

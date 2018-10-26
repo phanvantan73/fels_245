@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Word extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'word',
         'audio',
@@ -14,6 +17,8 @@ class Word extends Model
         'image',
         'lesson_id',
     ];
+
+    protected $dates = ['deleted_at'];
 
     public function lesson()
     {
@@ -29,13 +34,7 @@ class Word extends Model
 
     public function isAddToList($wordId)
     {
-        foreach (Auth::user()->words as $word) {
-            if ($word->pivot->word_id == $wordId) {
-                return true;
-            }
-        }
-
-        return false;
+        return Auth::user()->words()->wherePivot('word_id', $wordId)->exists();
     }
 
     public function getImageAttribute()
