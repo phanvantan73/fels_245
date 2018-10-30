@@ -28,7 +28,7 @@
                 <a href="{{ route('words.index') }}"><i class="fa fa-adjust"></i>@lang('message.managememt.words')</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-question-circle"></i>@lang('message.management.questions')</a>
+                <a href="{{ route('questions.index') }}"><i class="fa fa-question-circle"></i>@lang('message.management.questions')</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-send"></i>@lang('message.management.options')</a>

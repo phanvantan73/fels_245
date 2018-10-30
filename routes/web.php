@@ -103,6 +103,10 @@ Route::group(['namespace' => 'Administrator'], function () {
                 Route::resource('words', 'WordController', [
                     'except' => 'create',
                 ]);
+
+                Route::resource('questions', 'QuestionController', [
+                    'except' => 'create',
+                ]);
             });
         });
     });
