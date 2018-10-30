@@ -92,6 +92,13 @@ Route::group(['namespace' => 'Administrator'], function () {
                         'show' => 'admin.courses.show',
                     ],
                 ]);
+
+                Route::resource('lessons', 'LessonController', [
+                    'except' => 'create',
+                    'names' => [
+                        'show' => 'admin.lessons.show',
+                    ],
+                ]);
             });
         });
     });
