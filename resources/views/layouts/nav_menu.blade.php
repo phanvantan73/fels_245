@@ -25,7 +25,7 @@
                 <a href="{{ route('lessons.index') }}"><i class="fa fa-code"></i>@lang('message.management.lessons')</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-adjust"></i>@lang('message.managememt.words')</a>
+                <a href="{{ route('words.index') }}"><i class="fa fa-adjust"></i>@lang('message.managememt.words')</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-question-circle"></i>@lang('message.management.questions')</a>

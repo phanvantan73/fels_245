@@ -99,6 +99,10 @@ Route::group(['namespace' => 'Administrator'], function () {
                         'show' => 'admin.lessons.show',
                     ],
                 ]);
+
+                Route::resource('words', 'WordController', [
+                    'except' => 'create',
+                ]);
             });
         });
     });
